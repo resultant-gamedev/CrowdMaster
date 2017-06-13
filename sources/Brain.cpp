@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Brain.h"
 #include "neurons/NeuronAnd.h"
+#include "neurons/NeuronOr.h"
 
 Brain::Brain(uint noNeurons) {
     outputs.resize(noNeurons);
@@ -24,6 +25,15 @@ void Brain::evaluate() {
 
 void Brain::newNeuronAnd(uint slot, uint *inputs, uint n) {
     NeuronAnd* np = new NeuronAnd(this, slot);
+    for (int i=0; i<n; i++) {
+        np->inputs.push_back(*inputs);
+        inputs++;
+    }
+    addNeuron(np);
+}
+
+void Brain::newNeuronOr(uint slot, uint *inputs, uint n) {
+    NeuronOr* np = new NeuronOr(this, slot);
     for (int i=0; i<n; i++) {
         np->inputs.push_back(*inputs);
         inputs++;

@@ -5,6 +5,7 @@
 #include <map>
 #include <bits/unique_ptr.h>
 #include "Neuron.h"
+
 class Neuron;
 
 //typedef std::pair<int, double> fuzzyElement;
@@ -19,6 +20,7 @@ public:
     std::vector<fuzzySet> outputs;
     void evaluate();
     void newNeuronAnd(uint slot, uint inputs[], uint n);
+    void newNeuronOr(uint slot, uint inputs[], uint n);
 private:
     void addNeuron(Neuron* n);
     std::vector<Neuron*> neurons;

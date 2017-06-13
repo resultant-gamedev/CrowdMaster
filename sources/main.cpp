@@ -2,7 +2,7 @@
 #include "Brain.h"
 
 int main() {
-    Brain b(3);
+    Brain b(4);
 
     fuzzySet fa;
     fa[1] = 0.2;
@@ -14,10 +14,16 @@ int main() {
     fb[3] = 1;
     b.outputs[1] = fb;
 
-    uint input[] = {0, 1};
-    b.newNeuronAnd(2, input, 2);
+    uint inputsAnd[] = {0, 1};
+    b.newNeuronAnd(2, inputsAnd, 2);
+
+    uint inputsOr[] = {0, 2};
+    b.newNeuronOr(3, inputsOr, 2);
 
     b.evaluate();
 
-    std::cout << b.outputs[2].begin()->first << ", " << b.outputs[2].begin()->second << std::endl;
+    std::cout << b.outputs[0].at(2) << std::endl;
+    std::cout << b.outputs[1].at(2) << std::endl;
+    std::cout << b.outputs[2].at(2) << std::endl;
+    std::cout << b.outputs[3].at(2) << std::endl;
 }
